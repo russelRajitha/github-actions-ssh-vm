@@ -1,0 +1,20 @@
+name: Debug Workflow
+
+on: [push]
+
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Debugging Step
+        run: |
+          # Insert any commands you want to run for debugging here
+          echo "Debugging..."
+          sleep 120  # Example: sleep for 2 minutes
+      - name: End of Workflow
+        run: |
+          echo "End of Workflow"
