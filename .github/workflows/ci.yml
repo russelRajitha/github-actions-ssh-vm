@@ -17,6 +17,12 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y openssh-server
       - name: Start SSH service
         run: sudo service ssh start
+      - name: Show SSH connection information
+        env:
+          SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
+          SSH_PORT: ${{ secrets.SSH_PORT }}
+          SSH_WORKSPACE: ${{ github.workspace }}
+        run: echo "Connect using: ssh $SSH_USERNAME@$SSH_WORKSPACE -p $SSH_PORT"
       - name: Debugging Step
         run: |
           # Insert any commands you want to run for debugging here
