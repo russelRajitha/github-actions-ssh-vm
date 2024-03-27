@@ -22,7 +22,7 @@ jobs:
           SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
           SSH_PORT: ${{ secrets.SSH_PORT }}
           SSH_WORKSPACE: ${{ github.workspace }}
-        run: echo "Connect using: ssh $SSH_USERNAME@$SSH_WORKSPACE -p $SSH_PORT"
+        run: echo "Connect using ssh $SSH_USERNAME@$SSH_WORKSPACE -p $SSH_PORT"
       - name: Debugging Step
         run: |
           # Insert any commands you want to run for debugging here
