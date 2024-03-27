@@ -13,6 +13,10 @@ jobs:
           ifconfig
       - name: Checkout code
         uses: actions/checkout@v2
+      - name: Install SSH
+        run: sudo apt-get update && sudo apt-get install -y openssh-server
+      - name: Start SSH service
+        run: sudo service ssh start
       - name: Debugging Step
         run: |
           # Insert any commands you want to run for debugging here
