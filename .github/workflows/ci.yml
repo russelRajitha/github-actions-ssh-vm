@@ -10,19 +10,15 @@ jobs:
     steps:
       - name: Display IP Address
         run: |
-          ifconfig
+          curl ifconfig.me
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Install SSH
         run: sudo apt-get update && sudo apt-get install -y openssh-server
       - name: Start SSH service
         run: sudo service ssh start
-      - name: Show SSH connection information
-        env:
-          SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
-          SSH_PORT: ${{ secrets.SSH_PORT }}
-          SSH_WORKSPACE: ${{ github.workspace }}
-        run: echo "Connect using ssh $SSH_USERNAME@$SSH_WORKSPACE -p $SSH_PORT"
+      - name: Add SSH private key
+        run: echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa
       - name: Debugging Step
         run: |
           # Insert any commands you want to run for debugging here
