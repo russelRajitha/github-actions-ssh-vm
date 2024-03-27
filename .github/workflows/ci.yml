@@ -18,6 +18,8 @@ jobs:
       - name: Start SSH service
         run: sudo service ssh start
       - name: Add SSH private key
+        run: mkdir ~/.ssh
+      - name: Add SSH private key
         run: echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa
       - name: Debugging Step
         run: |
