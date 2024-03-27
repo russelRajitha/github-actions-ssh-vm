@@ -13,19 +13,6 @@ jobs:
           ifconfig
       - name: Checkout code
         uses: actions/checkout@v2
-
-      # Install SSH server
-      - name: Install SSH
-        run: sudo apt-get update && sudo apt-get install -y openssh-server
-
-      # Start SSH service
-      - name: Start SSH service
-        run: sudo service ssh start
-
-      - name: Show SSH connection information
-        run:
-         echo "Connect using: ssh ${{ secrets.SSH_USERNAME }}@${{ github.workspace }} -p ${{ secrets.SSH_PORT }}"
-
       - name: Debugging Step
         run: |
           # Insert any commands you want to run for debugging here
